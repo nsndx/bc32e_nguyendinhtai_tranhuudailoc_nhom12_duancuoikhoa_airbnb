@@ -23,6 +23,7 @@ const QuanLyNguoiDung: React.FC = () => {
    const [keyword, setKeyword] = useState('')
    const [display, setDisplay] = useState('hidden')
    const [displayUpdate, setDisplayUpdate] = useState('hidden')
+   const [pass, setPass] = useState('')
 
    useEffect(() => {
       dispatch(getUsersPhanTrang(`pageIndex=${search.get('pageIndex')}&pageSize=10&keyword=${search.get('keyword')}`))
@@ -68,7 +69,13 @@ const QuanLyNguoiDung: React.FC = () => {
                      <td className='w-14 break-words'><img src={nguoiDung.avatar} alt="..." /></td>
                      <td className='w-32 break-words'>{nguoiDung.name}</td>
                      <td className='w-28 break-words'>{nguoiDung.birthday}</td>
-                     <td className='w-28 break-words'>{nguoiDung.password}</td>
+                     <td className='w-28 break-words cursor-pointer' onClick={() => {
+                        if (pass === nguoiDung.id.toString()) {
+                           setPass('')
+                        } else {
+                           setPass(nguoiDung.id.toString())
+                        }
+                     }}>{pass === nguoiDung.id.toString() ? nguoiDung.password : '*****'}</td>
                      <td className='w-40 break-words'>{nguoiDung.email}</td>
                      <td className='w-28 break-words'>{nguoiDung.phone}</td>
                      <td className='w-20 break-words'>{nguoiDung.gender === true ? 'Nam' : 'Nữ'}</td>
@@ -103,7 +110,7 @@ const QuanLyNguoiDung: React.FC = () => {
          <div className={`${display} fixed top-0 bottom-0 left-0 right-0 bg-black/50`}>
             <PopupThemNguoiDung setDisplay={setDisplay} />
          </div>
-         
+
          <div className={`${displayUpdate} fixed top-0 bottom-0 left-0 right-0 bg-black/50`}>
             <PopupCapNhatNguoiDung setDisplayUpdate={setDisplayUpdate} />
          </div>
