@@ -1,0 +1,7 @@
+export { getViTriAllReducer } from './getViTriAllReuducer'
+export { getViTriPhanTrangReducer } from './getViTriPhanTrangReducer'
+export { postViTriReducer } from './postViTriReducer'
+export { deleteViTriReducer } from './deleteViTriReducer'
+export { getViTriIDReducer } from './getViTriIDReducer'
+export { putViTriIDReducer } from './putViTriIDReducer'
+export { getViTriPhanTrangTimKiemReducer } from './getViTriPhanTrangTimKiemReducer'
